@@ -20,4 +20,4 @@ public class Ex2 {
 	}
 
 }
-//the number of iterates in array is equals to the size of it, the most worst numbers of runs is the size of the array, then the complexity is O(n) in array[n]
+//time complexity is O(n) because the function makes n-2 recursive calls
