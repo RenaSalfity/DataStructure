@@ -24,3 +24,5 @@ public class Ex1 {
 	}
 
 }
+
+//total number of recursive calls is n and each call performs O(1), and that means time complexity is O(n)
