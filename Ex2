@@ -1,0 +1,22 @@
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+
+public class Ex2 {
+
+	public static void main(String[] args) {
+		int[] array = { 1, 3, 7, 1, 2, 6, 0, 1 };
+//		int[] array = { 0,0,0,0,0,0,0,0 };
+		printLargestOfNeighbors(array, array.length - 2);
+	}
+
+	public static void printLargestOfNeighbors(int[] arr, int size) {
+		if (size <= 0) {
+
+			return;
+		}
+		if (arr[size] > arr[size - 1] && arr[size] > arr[size + 1])
+			System.out.println(arr[size]);
+		printLargestOfNeighbors(arr, size - 1);
+	}
+
+}
