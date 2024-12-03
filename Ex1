@@ -1,0 +1,26 @@
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+*/
+public class Ex1 {
+	public static int sumEvenElements(int arr[], int size) {
+	    if (size == 0) {
+	        return 0;  
+	    }
+
+	    int lastNum = arr[size - 1];  
+
+	    if (lastNum % 2 == 0) {
+	        return lastNum + sumEvenElements(arr, size - 1);
+	    } else {
+	        return sumEvenElements(arr, size - 1);
+	    }
+	}
+
+	public static void main(String[] args) {
+		int[] arr1= {1,2,3,4,5,6};
+		System.out.println(sumEvenElements(arr1,6));
+
+	}
+
+}
