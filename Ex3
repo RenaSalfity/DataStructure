@@ -21,3 +21,4 @@ public class Ex3 {
 	
 }
 }
+////time complexity is O(n) because the function makes n-2 recursive calls, the worst numbers of iterates is n, so the complexity is O(n)
