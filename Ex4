@@ -1,0 +1,25 @@
+/*
+ * רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+//sum of numbers that devided by 10
+public class Ex4 {
+
+	public static void main(String[] args) 
+	{
+		 int[] arr = {3, 10, 30, 13, 6, 5};
+		 
+		 System.out.println(sumOfNumbersDevidedByTen(arr,arr.length));
+	}
+	public static int sumOfNumbersDevidedByTen(int []arr,int size) {
+		int current;
+		if(size==0) {
+			return 0;										
+		}
+		  current = (arr[size - 1] % 10 == 0) ? arr[size - 1] : 0;
+	        return current + sumOfNumbersDevidedByTen(arr, size - 1);
+	
+}
+
+}
+//the complexity	 is O(n), every index will be checked once, so the num of iterates is n
