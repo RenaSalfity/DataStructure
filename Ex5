@@ -1,6 +1,30 @@
-/*
- * רינה סלפיתי 209143098
- * קאסם חליליה 207674227
- */
-
-
+	/*
+	 * רינה סלפיתי 209143098
+	קאסם חליליה 207674227
+	 */
+	public class Ex5 {
+		
+		public static void main(String[] args) {
+			int[] arr = {-3, 10, 30, -13, 0, 5};
+			
+			printIfBeforeNegAfterPos(arr, arr.length-2);
+			
+		}
+		/*this function check the array, it will print the numbers that 
+		there is a negative before it and positive after
+		in: array of integers and size of the integer
+		out: prints the numbers that make the condition explained up
+		*/
+	public static void printIfBeforeNegAfterPos(int []arr,int size) {
+			
+			if(size<=0) {	
+				return;
+			}
+			printIfBeforeNegAfterPos(arr, size-1);
+			if(0>=arr[size-1]&&0<arr[size+1])
+				System.out.println(arr[size]);
+			
+		}									
+	
+	}
+	//the complexity is O(n), the number of the iterates is the size of the array 
