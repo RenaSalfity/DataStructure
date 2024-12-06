@@ -10,6 +10,10 @@ public class Ex6 {
 		System.out.println(checkIfNeighbors(array, array.length - 1, num1, num2));
 	}
 
+	/*this func check if num1 & num2 is neighbors
+	 * in:  integer's array, array's size, 2 integers
+	 * out: true if num1 ,num2 neighbors, false if not
+	 */
 	public static boolean checkIfNeighbors(int[] arr, int size, int num1, int num2) {
 		if (size <= 0) {
 
@@ -21,3 +25,5 @@ public class Ex6 {
 
 	}
 }
+
+//the complexity is O(n), the number of the iterates is the size of the array 
