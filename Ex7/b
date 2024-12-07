@@ -1,0 +1,27 @@
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex7b {
+
+	public static void main(String[] args) {
+		int[] array = { 10, 30, 7, 1, 12, 6, 20, 1 };
+		int max=findMax(array,0,array.length-1);
+		System.out.println("max num in array is: "+max);
+	}
+
+	public static int findMax(int[] arr, int firstInd,int lastInd) {
+		
+		if (firstInd==lastInd) {
+			return arr[firstInd];
+		}
+		int mid=(firstInd+lastInd)/2; //cut the array to 2 halves
+		int maxLeft=findMax(arr,firstInd,mid);
+		int maxRight=findMax(arr,mid+1,lastInd);
+		
+		return Math.max(maxLeft, maxRight);
+			
+
+	}
+}
+// O(n)
