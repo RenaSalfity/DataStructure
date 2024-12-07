@@ -1,0 +1,34 @@
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex8 {
+	
+    public static void main(String[] args) {
+        int[] arr = {-15, -10, -5, 0, 5, 10, 15, 20};
+        int num = -20;
+        int index = binarySearch(arr, num, 0, arr.length - 1);
+        System.out.println("Index of " + num + ": " + index);
+    }
+
+    public static int binarySearch(int[] arr, int num, int left, int right) {
+       
+    	if (left > right) {
+            return -1;
+        }
+    	//if true, it means that the numbers isnt found in this array
+    	//in sorted array the right should be bigger than left
+    	
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == num) {
+            return mid;
+        }
+        //checks left side if true, else right side
+        if (num < arr[mid]) {
+            return binarySearch(arr, num , left, mid - 1);
+        }
+        return binarySearch(arr, num, mid + 1, right);
+    }
+}
+//the complexity is O(log n), the size of the array is devided by two after every iterate
