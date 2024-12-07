@@ -1,0 +1,23 @@
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex7a {
+
+	public static void main(String[] args) {
+		int[] array = { 10, 3, 7, 1, 12, 6, 20, 1 };
+		int max=findMax(array,array.length);
+		System.out.println("max num in array is: "+max);
+	}
+
+	public static int findMax(int[] arr, int size) {
+		if (size==1) {
+			return arr[0];
+		}
+		int maxNumberInArray=findMax(arr,size-1);
+		return Math.max(arr[size - 1], maxNumberInArray);
+			
+
+	}
+}
+//time complexity is O(n), where n is the size of the array
