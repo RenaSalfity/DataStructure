@@ -1,0 +1,96 @@
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+
+public class Ex9 {
+
+    public static void main(String[] args) {
+        // Example arrays
+        int[] array1 = {4, 1, 3, 8, 7};
+        mergeSort(array1, 0, array1.length - 1);
+        System.out.print("Sorted array1: ");
+        printArray(array1);
+
+        int[] array2 = {9, 8, 7, 6, 5, 4};
+        mergeSort(array2, 0, array2.length - 1);
+        System.out.print("Sorted array2: ");
+        printArray(array2);
+
+        int[] array3 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        mergeSort(array3, 0, array3.length - 1);
+        System.out.print("Sorted array3: ");
+        printArray(array3);
+    }
+
+    // Merge Sort Function
+    public static void mergeSort(int[] array, int left, int right) {
+        if (left == right) {
+            return; // Subarray with one element is sorted
+        }
+
+        // Find the middle point
+        int mid = left + (right - left) / 2;
+
+        // Recursively sort the left half and the right half
+        mergeSort(array, left, mid);
+        mergeSort(array, mid + 1, right);
+
+        // Merge the sorted halves
+        merge(array, left, mid, right);
+    }
+
+    // Merge Function
+    public static void merge(int[] array, int left, int mid, int right) {
+        // Calculate the sizes of the two subarrays
+        int size1 = mid - left + 1;
+        int size2 = right - mid;
+
+        // Create temporary arrays
+        int[] leftArray = new int[size1];
+        int[] rightArray = new int[size2];
+
+        // Copy data to temporary arrays
+        for (int i = 0; i < size1; i++) {
+            leftArray[i] = array[left + i];
+        }
+        for (int j = 0; j < size2; j++) {
+            rightArray[j] = array[mid + 1 + j];
+        }
+
+        // Merge the temporary arrays back into the original array
+        int i = 0, j = 0, k = left;
+
+        while (i < size1 && j < size2) {
+            if (leftArray[i] <= rightArray[j]) {
+                array[k++] = leftArray[i++];
+            } else {
+                array[k++] = rightArray[j++];
+            }
+        }
+
+        // Copy remaining elements of leftArray, if any
+        while (i < size1) {
+            array[k++] = leftArray[i++];
+        }
+
+        // Copy remaining elements of rightArray, if any
+        while (j < size2) {
+            array[k++] = rightArray[j++];
+        }
+    }
+
+    // function to print an array
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+}
+/* complexity of dividing is O(1) 
+ * merging: we merge 2 arrays each one is n/2, then O(n)
+ * we devide the array half , so log2(n)
+ * so the complexity of the answer is O(nlogn)
+ * spave: O(n)
+ * */
