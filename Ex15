@@ -1,8 +1,9 @@
-import java.util.Stack;
+
 /*
  *קאסם חליליה 207674227
  *רינה סלפיתי 209143098
 */
+import java.util.Stack;
 public class Ex15 {
     // Function to move the top element to the bottom
     public static Stack<Integer> moveTopToBottom(Stack<Integer> originalStack) {
