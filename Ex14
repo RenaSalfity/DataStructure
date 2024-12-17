@@ -1,0 +1,46 @@
+import java.util.Stack;
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex14 {
+    public static boolean checkOrder(Stack<Integer> origStack) {
+        Stack<Integer> tempStack = new Stack<>(); // Temporary stack to preserve original order
+        boolean isAscending = true; // Flag to check order
+
+        // Copy from original to temp stack to save the original order
+        while (!origStack.isEmpty()) {
+            tempStack.push(origStack.pop());
+        }
+
+        //  push  to the original stack while checking ascending order
+        int prev = tempStack.pop();
+        origStack.push(prev); // Return the first element to the original stack
+
+        while (!tempStack.isEmpty()) {
+            int curr = tempStack.pop();
+            origStack.push(curr); // Return the current element to the original stack
+
+            if (prev >= curr) { // If ascending order is false
+                isAscending = false;
+            }
+            prev = curr; // Update the previous element
+        }
+
+        return isAscending;
+    }
+
+    public static void main(String[] args) {
+        Stack<Integer> originalStack = new Stack<>();
+        originalStack.push(1);
+        originalStack.push(2);
+        originalStack.push(3);
+        originalStack.push(4);
+        originalStack.push(5);
+
+        System.out.println("Original Stack: " + originalStack);
+        System.out.println("Is Ascending Order? " + checkOrder(originalStack));
+        System.out.println("Original Stack After Check: " + originalStack);
+    }
+}
+//O(n), the num of the iterates is the number of elements in the stack
