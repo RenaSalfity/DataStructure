@@ -13,7 +13,7 @@ public class Ex16 {
             tempStack.push(originalStack.pop());
         }
 
-        //  Push the top element  back to the bottom
+        //  Pop the top element to bottom
         bottom=tempStack.pop();
 
         //  Restore the elements from tempStack to originalStack
