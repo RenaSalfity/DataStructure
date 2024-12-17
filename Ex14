@@ -1,8 +1,8 @@
-import java.util.Stack;
 /*
 רינה סלפיתי 209143098
 קאסם חליליה 207674227
  */
+import java.util.Stack;
 public class Ex14 {
     public static boolean checkOrder(Stack<Integer> origStack) {
         Stack<Integer> tempStack = new Stack<>(); // Temporary stack to preserve original order
