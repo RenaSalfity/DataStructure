@@ -39,3 +39,4 @@ public class Ex15 {
         System.out.println("Stack after moving top to bottom: " + st);
     }
 }
+//o(n), num of iterates is the number of element in the stack
