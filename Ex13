@@ -30,12 +30,16 @@ public class Ex13 {
 		originalStack.push(4);
 		originalStack.push(5);
 
+		//printing the original stack
 		System.out.println("Original Stack: " + originalStack);
 
+		//reversing the stack
 		Stack<Integer> reversedStack = reverseStack(originalStack);
 
+		//the original stack reversed:
 		System.out.println("Reversed Stack: " + reversedStack);
 
+		//original stack after all the thing we've done
 		System.out.println("Original Stack After Reverse: " + originalStack);
 	}
 
