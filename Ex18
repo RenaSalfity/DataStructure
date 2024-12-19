@@ -1,0 +1,59 @@
+import java.util.Stack;
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex18 {
+		    // Function to insert an element into a sorted stack
+			//in: sorted stack of integers and num
+			//out: new stack with num in it 
+				public static Stack<Integer> insertIntoSortedStack(Stack<Integer>  st, int num) {
+		        Stack<Integer> tempSt = new Stack<>();
+		        int current;
+		        boolean inserted= false;// to break the condition if the num is already in 
+		        // Move elements larger than num to the temp stack
+		        while (!st.isEmpty()) {
+		            current = st.pop();
+		            if (!inserted&&current > num) 
+		            {
+		            	tempSt.push(current);
+		            } else {
+		            	if(!inserted) {
+		                // Put the element back if it's smaller than or equal to num
+		                st.push(current);
+		                inserted=true;
+		            	}
+		            }
+		        }
+
+		        // Insert the number in  correct position
+		        st.push(num);
+
+		        // Restore elements back from the temp stack to the original stack
+		        while (!tempSt.isEmpty()) {
+		            st.push(tempSt.pop());
+		        }
+
+		        return st;
+		    }
+
+		    public static void main(String[] args) {
+		        Stack<Integer> st = new Stack<>();
+		        st.push(1);
+		        st.push(2);
+		        st.push(4);
+		        st.push(5);
+
+		        System.out.println("Stack before insertion: " + st);
+		        insertIntoSortedStack(st, 3);
+		        System.out.println("Stack after inserting 3: " + st);
+
+		        insertIntoSortedStack(st, 0);
+		        System.out.println("Stack after inserting 0: " + st);
+
+		        insertIntoSortedStack(st, 6);
+		        System.out.println("Stack after inserting 6: " + st);
+		    }
+		}
+		// O(n): The number of iterations depends on the position where the number needs to be inserted.
+		//but the maximum iterates is the num of elements in stack 
