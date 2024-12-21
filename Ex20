@@ -1,0 +1,39 @@
+
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+import java.util.Stack;
+
+public class Ex20 {
+	public static void main(String[] args) {
+		Stack<Double> st1 = new Stack<>();
+
+		st1.push(1.5);
+		st1.push(1.6);
+		st1.push(0.35);
+		System.out.println(biggestNum(st1));
+	}
+
+	// get a stack of nums and return the biggest of all
+	public static double biggestNum(Stack<Double> numbers) {
+		Stack<Double> tempSt = new Stack<>();
+		double biggestNum, current;
+		biggestNum = numbers.pop();
+		tempSt.push(biggestNum);
+		while (!numbers.isEmpty()) {
+			current = numbers.pop();
+			tempSt.push(current);
+			if (current > biggestNum)
+				biggestNum = current;
+		}
+		while (!tempSt.isEmpty()) {
+			numbers.push(tempSt.pop());
+		}
+		// check if the original stack remains the same
+		System.out.println(numbers);
+		return biggestNum;
+
+	}
+
+}
