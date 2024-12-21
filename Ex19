@@ -1,0 +1,66 @@
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+
+import java.util.Stack;
+import java.util.Scanner;
+
+public class Ex19 {
+	public static void main(String[] args) {
+
+		System.out.println(CustomSortedStack());
+
+	}
+
+	public static Stack<Integer> CustomSortedStack() {
+		Scanner sc = new Scanner(System.in);
+		Stack<Integer> sortedStack = new Stack<>();
+		int num;
+		boolean flag = true;
+
+		System.out.println("Enter numbers to insert into the stack (-999 to stop): ");
+
+		while (flag) {
+			System.out.println("enter a num:");
+			num = sc.nextInt();
+			if (num != -999)
+				insertIntoSortedStack(sortedStack, num);
+			else
+				flag = false;
+		}
+		return sortedStack;
+	}
+
+	public static Stack<Integer> insertIntoSortedStack(Stack<Integer> st, int num) {
+		Stack<Integer> tempSt = new Stack<>();
+		int current;
+		boolean flag = false;
+
+		if (st.isEmpty()) {
+			st.push(num);
+			return st;
+		}
+
+		while (!st.isEmpty() && !flag) {
+			current = st.pop();
+			if (current > num) {
+				tempSt.push(num);
+				tempSt.push(current);
+				flag = true;
+			} else {
+				tempSt.push(current);
+			}
+		}
+
+		if (!flag) {
+			tempSt.push(num);
+		}
+
+		while (!tempSt.isEmpty()) {
+			st.push(tempSt.pop());
+		}
+		return st;
+	}
+
+}
