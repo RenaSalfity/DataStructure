@@ -10,13 +10,14 @@ public class Ex24 {
 		int sum=0;
 		int head=0;
 		Queue<Integer> t = new Queue<Integer>();
-
+		//calculating sum and moving the nums to a temp queue
 		while(!q.isEmpty()) {
 				head= q.remove();
 		sum+=head;
 		t.insert(head);
 		
 		}
+		//moving the nums back to their main queue
 		while(!t.isEmpty())
 			q.insert(t.remove());
 		return sum;
