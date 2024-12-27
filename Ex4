@@ -11,12 +11,13 @@ public class Ex4 {
 		 
 		 System.out.println(sumOfNumbersDevidedByTen(arr,arr.length));
 	}
+	//this function gets an array of integers and the size of it, returns the sum of the numbers that devided by ten
 	public static int sumOfNumbersDevidedByTen(int []arr,int size) {
 		int current;
 		if(size==0) {
 			return 0;										
 		}
-		  current = (arr[size - 1] % 10 == 0) ? arr[size - 1] : 0;
+		  current = (arr[size - 1] % 10 == 0) ? arr[size - 1] : 0; 
 	        return current + sumOfNumbersDevidedByTen(arr, size - 1);
 	
 }
