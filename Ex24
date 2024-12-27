@@ -1,0 +1,39 @@
+package ex1;
+import unit4.collectionsLib.Queue;
+/*
+רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+
+public class Ex24 {
+	public static int sumQueueElements(Queue<Integer> q) {
+		int sum=0;
+		int head=0;
+		Queue<Integer> t = new Queue<Integer>();
+
+		while(!q.isEmpty()) {
+				head= q.remove();
+		sum+=head;
+		t.insert(head);
+		
+		}
+		while(!t.isEmpty())
+			q.insert(t.remove());
+		return sum;
+	}
+	public static void main(String[] args) {
+		Queue<Integer> q = new Queue<Integer>();
+		q.insert(1);
+		q.insert(2);
+		q.insert(3);
+		q.insert(4);
+		System.out.println("the queue before: " + q);
+		System.out.println("sum of the queue "+sumQueueElements(q));
+		System.out.println("the queue after: " + q);
+
+
+	}
+
+}
+
+//the complexity is O(n), the number of iterates its the number of the elements in the queue
