@@ -10,6 +10,7 @@ public class Ex3 {
 		 
 		 System.out.println(isThereNeighborsEqualsTen(arr,arr.length));
 	}
+	//recursively checks whether there exists a pair of adjacent elements in the array whose sum is a multiple of 10
 	public static Boolean isThereNeighborsEqualsTen(int []arr,int size) {
 		if(size<2) {
 			return false;
