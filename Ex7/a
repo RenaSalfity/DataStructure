@@ -9,6 +9,8 @@ public class Ex7a {
 		int max=findMax(array,array.length);
 		System.out.println("max num in array is: "+max);
 	}
+	//recursively finds the maximum value in an array by comparing the last element of the array with the maximum value of the rest of the array.
+
 
 	public static int findMax(int[] arr, int size) {
 		if (size==1) {
