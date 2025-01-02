@@ -38,12 +38,12 @@ public class Ex26 {
         Queue<String> q1 = new Queue<>();
         Queue<String> q2 = new Queue<>();
 
-        // Populate the first sorted queue
+        // the first sorted queue
         q1.insert("Alice");
         q1.insert("Charlie");
         q1.insert("David");
 
-        // Populate the second sorted queue
+        // the second sorted queue
         q2.insert("Bob");
         q2.insert("Eve");
         q2.insert("Frank");
