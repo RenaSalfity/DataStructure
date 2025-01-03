@@ -1,0 +1,43 @@
+/*
+ * רינה סלפיתי 209143098
+ * קאסם חליליה 207674227
+ */
+import java.util.Stack;
+
+public class Ex23 {
+
+	public static boolean secret1(int num, int digit) {
+		if (num < 10)
+			return (num % 2 == digit % 2);
+		if (num % 2 != digit % 2)
+			return false;
+		return secret1(num / 10, digit);
+	}
+	public static boolean secret2(Stack <Integer> s) {
+		boolean ok;
+		int x;
+		if(s.isEmpty())
+			ok=true;
+		else {
+			x=s.pop();
+			if(!(secret1(x,x%10)))
+				ok=false;
+			else
+				ok=secret2(s);
+		}
+		return ok;
+	}
+
+	public static void main(String[] args) {
+		Stack<Integer> stack = new Stack<>();
+
+		stack.push(321);
+		stack.push(531);
+		stack.push(25);
+		stack.push(426);
+		System.out.println(secret1(25,5));
+		System.out.println(secret2(stack));
+		
+		
+	}
+}
