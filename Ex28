@@ -1,0 +1,50 @@
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+
+import unit4.collectionsLib.Node;
+
+public class Ex28 {
+
+	private static Node<Integer> createList() {
+		Node<Integer> first = null;
+		Node<Integer> last = null;
+
+		for (int i = 0; i < 10; i++) {
+			Node<Integer> newNode = new Node<Integer>(i, null);
+			if (first == null) {
+				first = newNode;
+				last = newNode;
+			} else {
+				last.setNext(newNode);
+				last = newNode;
+			}
+		}
+		return first;
+	}
+
+	// returns sum of nums in the list
+	private static int sumList(Node<Integer> h) {
+		int sum = 0;
+		Node<Integer> tmp = null;
+		for (tmp = h; tmp != null; sum += tmp.getValue(), tmp = tmp.getNext())
+			;
+		return sum;
+	}
+
+	private static void printList(Node<Integer> h) {
+		Node<Integer> tmp = null;
+		for (tmp = h; tmp != null; tmp = tmp.getNext())
+			System.out.print(tmp.getValue() + " ");
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Node<Integer> h = null;
+		h = createList();
+		printList(h);
+		System.out.println(sumList(h));
+		
+	}
+}
