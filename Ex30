@@ -1,0 +1,41 @@
+import unit4.collectionsLib.Node;
+
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex30 {
+
+	private static void printList(Node<Integer> h) {
+		Node<Integer> tmp = null;
+		for (tmp = h; tmp != null; tmp = tmp.getNext())
+			System.out.print(tmp.getValue() + " ");
+		System.out.println();
+
+	}
+	//if nums are sorted it returns true,else it returns false
+	private static boolean isSorted(Node<Integer> h) {
+		boolean flag = true;
+		Node<Integer> tmp = null;
+		for (tmp = h; tmp != null && flag; tmp = tmp.getNext())
+			if (tmp.getNext() != null)
+				if (tmp.getValue() > tmp.getNext().getValue())
+					flag = false;
+
+		return flag;
+
+	}
+
+	public static void main(String[] args) {
+		Node<Integer> head = null;
+		head = new Node<Integer>(1, head);
+		head = new Node<Integer>(2, head);
+		head = new Node<Integer>(3, head);
+		head = new Node<Integer>(4, head);
+
+		printList(head);
+		System.out.println(isSorted(head));
+
+	}
+
+}
