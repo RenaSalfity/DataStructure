@@ -1,84 +1,52 @@
 /*
- *קאסם חליליה 207674227
- *רינה סלפיתי 209143098
-*/
+ * רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
 
 import unit4.collectionsLib.Node;
-
 public class Ex29 {
-	private static Node<Double> createList() {
-		Node<Double> first = null;
-		Node<Double> last = null;
-
-		for (double i = 1; i <=10; i++) {
-			Node<Double> newNode = new Node<Double>(i, null);
-			if (first == null) {
-				first = newNode;
-				last = newNode;
-			} else {
-				last.setNext(newNode);
-				last = newNode;
-			}
-
-		}
-		return first;
-
-	}
-
-	private static void printList(Node<Double> h) {
-		Node<Double> tmp = null;
-		for (tmp = h; tmp != null; tmp = tmp.getNext())
-			System.out.print(tmp.getValue() + " ");
-		System.out.println();
-
-	}
-
-	// returns list nums amount
-	private static double countList(Node<Double> h) {
-		double count = 0;
-		Node<Double> tmp = null;
-		for (tmp = h; tmp != null; count++, tmp = tmp.getNext())
-			;
-
-		return count;
-
-	}
-	//sums nodes values
-	private static double sumList(Node<Double> h) {
+// in : double node, out: returns the average of elements in node
+	public static double avgElementsInList(Node <Double> h) {
 		double sum = 0;
-		Node<Double> tmp = null;
-		for (tmp = h; tmp != null; sum += tmp.getValue(), tmp = tmp.getNext())
-			;
-
-		return sum;
-
+		double count =0;
+		Node<Double> temp = null;
+		for(temp=h; temp!=null; temp=temp.getNext()) {
+			sum +=temp.getValue();
+			count++;
+		}
+		return sum/count;
 	}
-	//checks how many nums are higher than the avg and how many under
-	//if they're equal it returns true,else it returns false
-	private static boolean higherThanAvg(Node<Double> h) {
-		double count = countList(h);
-		double sum = sumList(h);
-		double avg = sum / count;
-		int aboveAvg = 0;
-		int underAvg = 0;
-		Node<Double> tmp = null;
-
-		for (tmp = h; tmp != null; tmp = tmp.getNext())
-			if (tmp.getValue() > avg)
-				aboveAvg++;
-			else if (tmp.getValue() < avg)
-				underAvg++;
-
-		return aboveAvg==underAvg;
-
+// in: double node, out: the function will count the elements that above and under the avg,  will return true if above == under
+	public static boolean countElementsByAvgInList(Node <Double> h) {
+		double countAbove = 0;
+		double countUnder=0;
+		double avg = avgElementsInList(h);
+		Node<Double> temp = null;
+		for(temp=h; temp!=null; temp=temp.getNext()) {
+			if(temp.getValue()<avg)
+				countUnder++;
+			if(temp.getValue()>avg)
+				countAbove++;
+		
+		}
+		return countAbove==countUnder;
 	}
-
+	
 	public static void main(String[] args) {
-		Node<Double> h = null;
-		h = createList();
-		printList(h);
-		System.out.println(higherThanAvg(h));
+		Node <Double> d = null;
 
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(1.d);
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(1.,d);
+		d= new Node<Double>(3.,d);
+		
+		System.out.println("the average is: "+avgElementsInList(d));
+		System.out.println("is under and above equals? "+ countElementsByAvgInList(d));
 	}
 
 }
