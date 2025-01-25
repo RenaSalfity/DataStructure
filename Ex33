@@ -1,0 +1,67 @@
+import unit4.collectionsLib.Node;
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex33 {
+    public static void printList(Node<Double> h) {
+        Node<Double> temp;
+        for (temp = h; temp != null; temp = temp.getNext()) {
+            System.out.print(temp.getValue() + " ");
+        }
+        System.out.println();
+    }
+    //this function gets double node, returns new node without duplicates
+    // the complexity is O(n*n), if the node has n numbers, the worst case that we have
+    // that we will run n iterates, and in every iteration we will run n iterates, to check appears
+    public static Node<Double> removeDuplicates(Node<Double> h) {
+        if (h == null) {
+            return null;
+        }
+
+        Node<Double> newH = new Node<>(h.getValue(), null);/// getting the head 
+        Node<Double> temp = h.getNext();//getting the next
+        
+        while (temp != null) {
+            if (!isAppear(newH, temp.getValue()))//checking every number
+            	{
+                Node<Double> newNode = new Node<>(temp.getValue(), null);
+                Node<Double> tail = newH;
+                while (tail.getNext() != null) {
+                    tail = tail.getNext();
+                }
+                tail.setNext(newNode);
+            }
+            temp = temp.getNext();
+        }
+        return newH;
+    }
+    	// this function gets double node and double num
+    	//returns true if the num appears, false if not
+    //complexity O(n)
+    public static boolean isAppear(Node<Double> h, double num) {
+        Node<Double> temp = h;
+        while (temp != null) {
+            if (temp.getValue().equals(num)) {
+                return true;
+            }
+            temp = temp.getNext();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Node<Double> h = null;
+        h = new Node<>(2., h);
+        h = new Node<>(2., h);
+        h = new Node<>(3., h);
+        h = new Node<>(5., h);
+        h = new Node<>(3., h);
+
+        System.out.println("node before: ");
+        printList(h);
+        h = removeDuplicates(h);
+        System.out.println("node after: ");
+        printList(h);
+    }
+}
