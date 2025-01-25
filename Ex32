@@ -1,0 +1,47 @@
+import unit4.collectionsLib.Node;
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex32 {
+	public static void  printList(Node <Double>h){
+		Node<Double>  temp = null;
+		for(temp=h; temp!=null; temp=temp.getNext())
+			System.out.print(temp.getValue()+" ");
+		
+		System.out.println();
+		
+	}
+	// the function gets a double node and a double number
+	//returns true if number appears in node, false if not 
+	public static boolean isAppear(Node <Double> h, double num) {
+		Node<Double> temp =h;
+		boolean flag = false;
+		if(h==null) {
+			return flag;
+		}
+		while(temp!=null&&!flag) {
+			if(temp.getValue()==num)
+				flag=true;
+			temp=temp.getNext();
+		}
+		return flag;
+		}
+	// the number of iterates in this function is n if the numbers of nodes is n
+	/// then the complexity is O(N)
+
+	public static void main(String[] args) {
+		Node<Double> h = null;
+		double num=7;
+		h= new Node<Double>(3.,h);
+		h= new Node<Double>(2.,h);
+		h= new Node<Double>(1.,h);
+		h= new Node<Double>(5.,h);
+		h= new Node<Double>(7.,h);
+		printList(h);
+		
+		System.out.println(num+"?? "+isAppear(h, num));
+
+	}
+
+}
