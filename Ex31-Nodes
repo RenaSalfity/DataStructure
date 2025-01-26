@@ -1,0 +1,53 @@
+import unit4.collectionsLib.Node;
+
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex31 {
+
+	private static void printList(Node<Integer> h) {
+		Node<Integer> tmp = null;
+		for (tmp = h; tmp != null; tmp = tmp.getNext())
+			System.out.print(tmp.getValue() + " ");
+		System.out.println();
+
+	}
+  //in: A linked list of integers (Node<Integer> h) and an integer value (n).
+  //out: length of the longest sequence of occurrences of n in the linked list.
+
+  //time complexity: O(n), where n is the number of nodes in the linked list.
+
+	private static int longestSequence(Node<Integer> h, int n) {
+		int count = 0, max = 0;
+		Node<Integer> tmp = null;
+		for (tmp = h; tmp != null; tmp = tmp.getNext())
+			if (tmp.getValue() == n)
+				count++;
+			else {
+				if (count > max)
+					max = count;
+				count = 0;
+			}
+
+		return max;
+
+	}
+
+	public static void main(String[] args) {
+		Node<Integer> head = null;
+		head = new Node<Integer>(4, head);
+		head = new Node<Integer>(3, head);
+		head = new Node<Integer>(2, head);
+		head = new Node<Integer>(1, head);
+		head = new Node<Integer>(3, head);
+		head = new Node<Integer>(2, head);
+		head = new Node<Integer>(2, head);
+		head = new Node<Integer>(1, head);
+
+		printList(head);
+		System.out.println(longestSequence(head, 2));//2
+
+	}
+
+}
