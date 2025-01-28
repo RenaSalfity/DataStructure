@@ -14,7 +14,8 @@ public class Ex30 {
 
 	}
 	//if nums are sorted it returns true,else it returns false
-	private static boolean isSorted(Node<Integer> h) {
+	// the number of iterates at the worst case is  n times, thats why the complexity in this funtion is O(n)
+ 	private static boolean isSorted(Node<Integer> h) {
 		boolean flag = true;
 		Node<Integer> tmp = null;
 		for (tmp = h; tmp != null && flag; tmp = tmp.getNext())
