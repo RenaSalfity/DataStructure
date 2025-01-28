@@ -6,6 +6,7 @@
 import unit4.collectionsLib.Node;
 public class Ex29 {
 // in : double node, out: returns the average of elements in node
+//the complexity is O(n) if the number of elements is n
 	public static double avgElementsInList(Node <Double> h) {
 		double sum = 0;
 		double count =0;
@@ -17,6 +18,7 @@ public class Ex29 {
 		return sum/count;
 	}
 // in: double node, out: the function will count the elements that above and under the avg,  will return true if above == under
+//the complexity is O(n+n) = O(2n) = O(n), in the line that calls the function avgElementsInList the complexity O(n), and for this function is also O(n)
 	public static boolean countElementsByAvgInList(Node <Double> h) {
 		double countAbove = 0;
 		double countUnder=0;
