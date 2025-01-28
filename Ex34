@@ -1,0 +1,54 @@
+import unit4.collectionsLib.Node;
+/*
+ * קאסם חליליה 207674227
+*רינה סלפיתי 209143098
+*/
+public class Ex34 {
+	public static void printList(Node<String> h) {
+        Node<String> temp;
+        for (temp = h; temp != null; temp = temp.getNext()) {
+            System.out.print(temp.getValue() + " ");
+        }
+        System.out.println();
+    }
+	//this function gets a node of strings and returned new node as a copy
+	//the complexity is O(n), the number of iterates in this function is the number of 
+	//elements in node
+	 public static Node<String> copyNode(Node<String>h){
+		 if (h == null) {
+	            return null;
+	        }
+
+	        Node<String> newH = new Node<>(h.getValue(), null);/// getting the head 
+	        Node<String> temp = h.getNext();//getting the next
+	        
+	        while (temp != null) {
+	                Node<String> newNode = new Node<>(temp.getValue(), null);
+	                Node<String> tail = newH;
+	                while (tail.getNext() != null) {
+	                    tail = tail.getNext();
+	                }
+	                tail.setNext(newNode);
+	            
+	            temp = temp.getNext();
+	        }
+	        return newH;
+	 }
+	 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node <String> h = null;
+		
+		h= new Node<String>("e",h);
+		h= new Node<String>("d",h);
+		h= new Node<String>("c",h);
+		h= new Node<String>("b",h);
+		h= new Node<String>("a",h);
+		printList(h);
+		System.out.println("end");
+		Node <String> newH = copyNode(h);
+		printList(newH);
+
+	}
+
+}
