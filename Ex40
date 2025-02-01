@@ -1,0 +1,70 @@
+
+import unit4.collectionsLib.Node;
+/*
+ * רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex40 {
+
+	public static void printList(Node<Integer> h) {
+        Node<Integer> temp;
+        for (temp = h; temp != null; temp = temp.getNext()) {
+            System.out.print(temp.getValue() + " ");
+        }
+        System.out.println();
+    }
+	//this function gets a node and num, checks if there are n sequences(can be down or up)
+	//complexity is O(n), the number of iterates is the number of elements at the worst case
+	    public static boolean hasConsecutiveSequence(Node<Integer> h, int n) {
+	        if (h == null || n <= 1) return false; 
+
+	        Node<Integer> current = h;
+
+	        while (current != null) {
+	            Node<Integer> temp = current;
+	            int countInc = 1, countDec = 1; // Count increasing and decreasing sequences
+
+	            // Check increasing sequence
+	            while (temp.getNext() != null && temp.getNext().getValue() == temp.getValue() + 1) {
+	                countInc++;
+	                temp = temp.getNext();
+	                if (countInc == n) return true;
+	            }
+
+	            temp = current; // Reset temp to check decreasing sequence
+
+	            // Check decreasing sequence
+	            while (temp.getNext() != null && temp.getNext().getValue() == temp.getValue() - 1) {
+	                countDec++;
+	                temp = temp.getNext();
+	                if (countDec == n) return true;
+	            }
+
+	            current = current.getNext(); // Move to the next node
+	        }
+
+	        return false; // No sequence found
+	    }
+
+	    // Example usage
+	    public static void main(String[] args) {
+	        Node<Integer> head = new Node<>(3, new Node<>(4,
+	                               new Node<>(5, new Node<>(6, 
+	                               new Node<>(2, new Node<>(1, 
+	                               new Node<>(0, null)))))));
+	    	Node <Integer> h = null;
+	    	
+			h= new Node<Integer>(3,h);
+			h= new Node<Integer>(4,h);
+			h= new Node<Integer>(5,h);
+			h= new Node<Integer>(6,h);
+			h= new Node<Integer>(2,h);
+			h= new Node<Integer>(1,h);
+			h= new Node<Integer>(0,h);
+			printList(h);
+	        System.out.println(hasConsecutiveSequence(h, 4)); // true 3 4 5 6
+	        System.out.println(hasConsecutiveSequence(h, 3)); // true 2 1 0
+	        System.out.println(hasConsecutiveSequence(h, 5)); // false
+	    }
+	
+}
