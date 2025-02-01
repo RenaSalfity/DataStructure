@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+import unit4.collectionsLib.Node;
+/*
+ * רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex38 {
+	public static Scanner s = new Scanner(System.in);  
+	public static void printList(Node<Integer> h) {
+        Node<Integer> temp;
+        for (temp = h; temp != null; temp = temp.getNext()) {
+            System.out.print(temp.getValue() + " ");
+        }
+        System.out.println();
+    }
+	//this function gets a sorted node and an element, add the element to the sorted node
+	public static Node<Integer> addElementToSortedNodeEx37(Node<Integer>h, int x) {
+		Node<Integer> temp = null;
+	    Node<Integer> p = new Node<Integer>(x);
+
+		if(h!=null) {
+			if(h.getValue()<x)
+			{
+				for(temp = h; temp.getNext()!=null&&temp.getNext().getValue()
+				<x;temp=temp.getNext());
+				p.setNext(temp.getNext());
+				temp.setNext(p);
+			}
+			else {
+				p.setNext(h);
+				h=p;
+			}
+		}
+		else {
+			h = new Node<Integer>(x);
+		}
+		return h;
+	}
+	//this function gets from the user as input numbers until getting -99
+	//returns a sorted node with the numbers entered
+	//this funtion runs n times and its the number of inputs until -99
+	//in every input the prev func will be called and it will run n times
+	//O(n*n) is the complexity
+	public static Node<Integer> createSortedNode(){
+		Node<Integer>h = null;
+		
+		  System.out.println("Enter a number to add or -99 to exit:");
+	        int num = s.nextInt();
+	        while (num != -99) {
+	            h = addElementToSortedNodeEx37(h, num); // Use sorted insertion
+	            System.out.println("Enter a number to add or -99 to exit:");
+	            num = s.nextInt();
+	        }
+	        return h;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node<Integer> h = createSortedNode();
+		
+		printList(h);
+	}
+
+}
