@@ -1,0 +1,81 @@
+import unit4.collectionsLib.Node;
+/*
+ * רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex41 {
+	//This function gets a node of integers, will change the node as :
+	//numbers greater than 100 will be at the front
+	//complexity is O(n), the number of iterates is the number of elements
+    public static Node<Integer> rearrangeList(Node<Integer> h) {
+        if (h == null || h.getNext() == null) return h; 
+
+        Node<Integer> greaterHead = null, greaterTail = null; // List for numbers >100
+        Node<Integer> smallerHead = null, smallerTail = null; // List for numbers <=100
+        Node<Integer> current = h;
+
+        while (current != null) {
+            Node<Integer> nextNode = current.getNext(); // Save next node
+            current.setNext(null); // Break the link
+
+            if (current.getValue() > 100) {
+                // Add to "greater than 100" list
+                if (greaterHead == null) {
+                    greaterHead = greaterTail = current;
+                } else {
+                    greaterTail.setNext(current);
+                    greaterTail = current;
+                }
+            } else {
+                // Add to "≤ 100" list
+                if (smallerHead == null) {
+                    smallerHead = smallerTail = current;
+                } else {
+                    smallerTail.setNext(current);
+                    smallerTail = current;
+                }
+            }
+            current = nextNode; // Move to the next node
+        }
+
+        // Connect the two lists
+        if (greaterTail != null) {
+            greaterTail.setNext(smallerHead); // Attach smaller list after greater list
+            return greaterHead; // Return new head (start of greater list)
+        }
+
+        return smallerHead; // If no numbers >100, return the smaller list
+    }
+
+    
+    public static void printList(Node<Integer> h) {
+        Node<Integer> temp;
+        for (temp = h; temp != null; temp = temp.getNext()) {
+            System.out.print(temp.getValue() + " ");
+        }
+        System.out.println();
+    }
+
+    // Example usage
+    public static void main(String[] args) {
+       
+    	Node <Integer> h = null;
+    	
+		h= new Node<Integer>(50,h);
+		h= new Node<Integer>(200,h);
+		h= new Node<Integer>(120,h);
+		h= new Node<Integer>(30,h);
+		h= new Node<Integer>(101,h);
+		h= new Node<Integer>(99,h);
+		h= new Node<Integer>(100,h);
+		h= new Node<Integer>(102,h);
+		
+        System.out.println("Original List:");
+        printList(h);
+
+        h = rearrangeList(h);
+
+        System.out.println("Updated List:");
+        printList(h);
+    }
+}
