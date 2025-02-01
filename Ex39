@@ -1,0 +1,56 @@
+
+import unit4.collectionsLib.Node;
+/*
+ * רינה סלפיתי 209143098
+קאסם חליליה 207674227
+ */
+public class Ex39 {
+	public static void printList(Node<Character> h) {
+        Node<Character> temp;
+        for (temp = h; temp != null; temp = temp.getNext()) {
+            System.out.print(temp.getValue() + " ");
+        }
+        System.out.println();
+    }
+		//this function gets node of characters, returns the list as asked
+	    public static Node<Character> removeDuplicatesEx39(Node<Character> h) {
+	        if (h == null) return null; //empty list
+
+	        Node<Character> current = h;
+
+	        while (current != null && current.getNext() != null) {
+	            if (current.getValue().equals(current.getNext().getValue())) {
+	                current.setNext(current.getNext().getNext()); // Remove duplicate
+	            } else {
+	                current = current.getNext(); // Move forward
+	            }
+	        }
+
+	        return h;
+	    }
+	    //complexity is O(N),the  number of iterates is n as the number of elements in node
+	 
+	    public static void main(String[] args) {
+	 
+	        Node <Character> h = null;
+			h= new Node<Character>('k',h);
+			h= new Node<Character>('k',h);
+			h= new Node<Character>('k',h);
+			h= new Node<Character>('b',h);
+			h= new Node<Character>('b',h);
+			h= new Node<Character>('k',h);
+			h= new Node<Character>('z',h);
+			h= new Node<Character>('e',h);
+			h= new Node<Character>('e',h);
+			h= new Node<Character>('z',h);
+	        System.out.println("Original List:");
+	        printList(h);
+
+	        h = removeDuplicatesEx39(h);
+	  
+
+	        System.out.println("After Removing Consecutive Duplicates:");
+	        printList(h);
+	    }
+	}
+
