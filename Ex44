@@ -1,0 +1,43 @@
+import unit4.collectionsLib.BinNode;
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex44 {
+	// Prints from right to left
+    private static void printListRight(BinNode<Integer> h) {
+        BinNode<Integer> tmp;
+        for (tmp = h; tmp != null; tmp = tmp.getRight()) {
+            System.out.print(tmp.getValue() + " ");
+        }
+        System.out.println();
+    }
+    //this function gets a number n, create a new BinNode that its head is n
+    //the complexity is O(n),  the number of  iterates is n
+	 public static BinNode<Integer> createReversedList(int n) {
+	     if(n<=0)
+	    	 return null;
+		 BinNode<Integer> h = null;
+	            for (int i = 1; i <= n; i++) {
+	                BinNode<Integer> newNode = new BinNode<>(i);
+	            	if (h == null) {
+	                    h = newNode;
+	                     
+	                } else {
+	                   
+	                    newNode.setRight(h);
+	                    h.setLeft(newNode);
+	                    h = newNode;
+	                }
+	            }
+	        
+	        return h;
+	    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        BinNode<Integer> h = createReversedList(5);
+        
+        printListRight(h);
+	}
+
+}
