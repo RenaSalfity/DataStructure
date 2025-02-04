@@ -12,6 +12,7 @@ public class Ex42 {
         }
         System.out.println();
 	}
+	//the complexity in this function is O(1), this function gets a BinNode and a number, adds the number to the head of the node, so the number of iterates is 1 in every call 
 	public static BinNode<Integer> addToHead(BinNode<Integer>h, int num){
 		   BinNode<Integer> newNode = new BinNode(num);
 	        newNode.setRight(h);
