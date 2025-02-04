@@ -1,0 +1,28 @@
+import unit4.collectionsLib.BinNode;
+import unit4.collectionsLib.Node;
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex42 {
+	private static void printListRight(BinNode<Integer> h) {
+        BinNode<Integer> tmp;
+        for (tmp = h; tmp != null; tmp = tmp.getRight()) {
+            System.out.print(tmp.getValue() + " ");
+        }
+        System.out.println();
+	}
+	public static BinNode<Integer> addToHead(BinNode<Integer>h, int num){
+		   BinNode<Integer> newNode = new BinNode(num);
+	        newNode.setRight(h);
+	        if(h!=null)
+	        	h.setLeft(newNode);
+	        return newNode;
+	}
+	public static void main(String[] args) {
+		BinNode<Integer>h = null;
+		h= addToHead(h, 0);
+		printListRight(h);
+	}
+
+}
