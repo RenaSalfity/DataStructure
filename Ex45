@@ -1,0 +1,83 @@
+import unit4.collectionsLib.BinNode;
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex45 {
+	//this func gets a bin node and return true if its palindrome, false if not
+	//the complexity is O(n), the number of iterates in this function is n
+	
+	 public static boolean isPalindrome(BinNode<Character> head) {
+	        if (head == null) {
+	            return true;
+	        }
+	        
+	        BinNode<Character> left = head;
+	        BinNode<Character> right = head;
+	        
+	        while (right.getRight() != null) {
+	            right = right.getRight();
+	        }
+	        
+	        while (left != right && left.getLeft() != right) {
+	            if (!left.getValue().equals(right.getValue())) {
+	                return false;
+	            }
+	            left = left.getRight();
+	            right = right.getLeft();
+	        }
+	        
+	        return true;
+	    }
+	    
+	    public static void printList(BinNode<Character> h) {
+	        BinNode<Character> tmp = h;
+	        while (tmp != null) {
+	            System.out.print(tmp.getValue() + " ");
+	            tmp = tmp.getRight();
+	        }
+	        System.out.println();
+	    }
+	    
+	public static void main(String[] args) {
+		 BinNode<Character> palindromeList = new BinNode<>('R');
+	        BinNode<Character> a1 = new BinNode<>('A');
+	        BinNode<Character> d = new BinNode<>('D');
+	        BinNode<Character> a2 = new BinNode<>('A');
+	        BinNode<Character> r2 = new BinNode<>('R');
+	        
+	        palindromeList.setRight(a1);
+	        a1.setLeft(palindromeList);
+	        a1.setRight(d);
+	        d.setLeft(a1);
+	        d.setRight(a2);
+	        a2.setLeft(d);
+	        a2.setRight(r2);
+	        r2.setLeft(a2);
+	        
+	        printList(palindromeList);
+	        System.out.println("Is palindrome: " + isPalindrome(palindromeList));
+	        
+	        // Non-palindrome list: "HELLO"
+	        BinNode<Character> nonPalindromeList = new BinNode<>('H');
+	        BinNode<Character> e = new BinNode<>('E');
+	        BinNode<Character> l1 = new BinNode<>('L');
+	        BinNode<Character> l2 = new BinNode<>('L');
+	        BinNode<Character> o = new BinNode<>('O');
+	        
+	        nonPalindromeList.setRight(e);
+	        e.setLeft(nonPalindromeList);
+	        e.setRight(l1);
+	        l1.setLeft(e);
+	        l1.setRight(l2);
+	        l2.setLeft(l1);
+	        l2.setRight(o);
+	        o.setLeft(l2);
+	        
+	        printList(nonPalindromeList);
+	        System.out.println("Is palindrome: " + isPalindrome(nonPalindromeList));
+	    }
+
+	}
+
+
