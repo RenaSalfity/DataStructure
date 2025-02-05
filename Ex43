@@ -1,0 +1,53 @@
+import unit4.collectionsLib.BinNode;
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Ex43 {
+	//this function gets bin node and num, add the num to the end of the list 
+	//complexity is O(n), the number of iterates in the while is n times
+	 public static BinNode<Integer> addToEnd(BinNode<Integer> head, int num) {
+	        BinNode<Integer> newNode = new BinNode<>(num);
+	        if (head == null) {
+	            return newNode;
+	        }
+	        
+	        BinNode<Integer> tmp = head;
+	        while (tmp.getRight() != null) {
+	            tmp = tmp.getRight();
+	        }
+	        
+	        tmp.setRight(newNode);
+	        newNode.setLeft(tmp);
+	        return head;
+	 }
+	// Prints from right to left
+	    private static void printListRight(BinNode<Integer> h) {
+	        BinNode<Integer> tmp;
+	        for (tmp = h; tmp != null; tmp = tmp.getRight()) {
+	            System.out.print(tmp.getValue() + " ");
+	        }
+	        System.out.println();
+	    }
+	public static void main(String[] args) {
+		 
+		BinNode<Integer> h = new BinNode<>(1);
+	    h.setRight(new BinNode<>(2));
+	    h.getRight().setLeft(h);
+
+	    h.getRight().setRight(new BinNode<>(3));
+	    h.getRight().getRight().setLeft(h.getRight());
+
+	    h.getRight().getRight().setRight(new BinNode<>(4));
+	    h.getRight().getRight().getRight().setLeft(h.getRight().getRight());
+	    System.out.println("node before: ");
+		printListRight(h);
+		System.out.println("node after add");
+		BinNode<Integer> hNull = null;
+
+		hNull= addToEnd(hNull, 5);
+		printListRight(hNull);
+		      
+	}
+	}
+
