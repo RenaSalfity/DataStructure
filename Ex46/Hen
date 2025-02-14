@@ -1,0 +1,56 @@
+import unit4.collectionsLib.BinNode;
+public class Hen {
+	private int serialNumber;
+	private BinNode<Egg> eggsH;
+	public Hen(int serialNumber) {
+		this.serialNumber=serialNumber;
+		this.eggsH=null;
+		
+	}
+	public int getSerialNumber() {return serialNumber;}
+	
+	///Add egg to the head O(1)
+	public void addEgg(Egg egg) {
+		
+        BinNode<Egg> newEggNode = new BinNode<>(egg);
+
+		if(eggsH!=null)
+		{
+			newEggNode.setRight(eggsH);
+			eggsH.setLeft(newEggNode);
+		}
+		
+		eggsH=newEggNode;
+	}
+	//print all eggs O(K)
+	public void  printEggs() {
+		BinNode<Egg> current = eggsH;
+		if(current==null) {
+			System.out.println("No Eggs for Hen "+ serialNumber);
+			return;
+		}
+		
+		System.out.println("Eggs For Hen "+ serialNumber + ": ");
+		while(current != null) {
+			System.err.println(current.getValue());
+			current=current.getRight();
+		}
+	}
+	//Transfer eggs to another hen O(k)
+	public void transferEggs(Hen otherHen) {
+		if(eggsH==null)return;
+		//tail for the current eggs
+		BinNode<Egg> currentTail=eggsH;
+		while(currentTail.getRight()!=null) {
+			currentTail=currentTail.getRight();
+		}
+		//Attach current list to the other hens
+		if(otherHen.eggsH!=null) {
+			currentTail.setRight(otherHen.eggsH);
+			otherHen.eggsH.setLeft(currentTail);
+		}
+		otherHen.eggsH=eggsH;
+		eggsH = null;
+	}
+	
+}
