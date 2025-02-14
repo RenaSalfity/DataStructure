@@ -1,0 +1,31 @@
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        int M = 5; // Number of hens
+        HenHouse henHouse = new HenHouse(M);
+
+        // Add some eggs
+        henHouse.addEgg(0, 101, 55.5, new Date());
+        henHouse.addEgg(0, 102, 60.2, new Date());
+        henHouse.addEgg(1, 201, 48.7, new Date());
+        henHouse.addEgg(1, 202, 52.3, new Date());
+
+        // Print eggs for hen 0 and hen 1
+        henHouse.printEggs(0);
+        henHouse.printEggs(1);
+
+        // Transfer eggs from hen 0 to hen 2
+        henHouse.transferEggs(0, 2);
+
+        // Check eggs after transfer
+        henHouse.printEggs(0); // Should be empty
+        henHouse.printEggs(2); // Should have eggs from hen 0
+
+        // Transfer eggs from hen 1 to hen 2
+        henHouse.transferEggs(1, 2);
+
+        // Print eggs of hen 2 after another transfer
+        henHouse.printEggs(2);
+    }
+}
