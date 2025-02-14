@@ -1,0 +1,91 @@
+public class WorkerCollection {
+    private Worker[] workers;  // מערך של עובדים
+    private int size;          // מספר העובדים הנוכחי
+
+    // בנאי – מתחיל עם מערך בגודל 2
+    public WorkerCollection() {
+        this.workers = new Worker[2];
+        this.size = 0;
+    }
+
+    // **הוספת עובד חדש – O(n)**
+    public void addWorker(Worker newWorker) {
+        if (size == workers.length) {  // אם המערך מלא, נכפיל את הגודל
+            expandArray();
+        }
+        workers[size] = newWorker;  // נוסיף את העובד למקום הפנוי
+        size++;
+    }
+
+    // פונקציה להגדלת המערך (הכפלה בגודל)
+    private void expandArray() {
+        Worker[] newWorkers = new Worker[workers.length * 2];  // יוצרים מערך חדש כפול בגודל
+        for (int i = 0; i < size; i++) {
+            newWorkers[i] = workers[i];  // מעתיקים את כל הנתונים למערך החדש
+        }
+        workers = newWorkers;
+    }
+
+    // **מחיקת עובד לפי שם – O(n)**
+    public boolean removeWorker(String fullName) {
+        for (int i = 0; i < size; i++) {
+            if (workers[i].getFullName().equals(fullName)) {
+                // הזזה של כל הערכים שמימין אחד שמאלה
+                for (int j = i; j < size - 1; j++) {
+                    workers[j] = workers[j + 1];
+                }
+                workers[size - 1] = null; // מנקים את המקום האחרון
+                size--; // מקטינים את כמות העובדים
+                return true;
+            }
+        }
+        return false; // אם לא נמצא העובד
+    }
+
+    // **הדפסת X העובדים עם המשכורת הכי גבוהה – O(x)**
+    public void printTopXHighestSalaries(int x) {
+        if (x > size) x = size; // אם X גדול מכמות העובדים, נתאים אותו
+
+        for (int i = 0; i < x; i++) {
+            int maxIndex = i;
+            for (int j = i + 1; j < size; j++) {
+                if (workers[j].getSalary() > workers[maxIndex].getSalary()) {
+                    maxIndex = j;
+                }
+            }
+            // החלפה כדי לשמור את העובדים עם השכר הגבוה ביותר בהתחלה
+            Worker temp = workers[i];
+            workers[i] = workers[maxIndex];
+            workers[maxIndex] = temp;
+
+            System.out.println(workers[i].getFullName() + " - " + workers[i].getSalary());
+        }
+    }
+
+    // **הדפסת Y העובדים עם המשכורת הכי נמוכה – O(y)**
+    public void printTopYLowestSalaries(int y) {
+        if (y > size) y = size; // אם Y גדול מכמות העובדים, נתאים אותו
+
+        for (int i = 0; i < y; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < size; j++) {
+                if (workers[j].getSalary() < workers[minIndex].getSalary()) {
+                    minIndex = j;
+                }
+            }
+            // החלפה כדי לשמור את העובדים עם השכר הנמוך ביותר בהתחלה
+            Worker temp = workers[i];
+            workers[i] = workers[minIndex];
+            workers[minIndex] = temp;
+
+            System.out.println(workers[i].getFullName() + " - " + workers[i].getSalary());
+        }
+    }
+
+    // **הדפסת כל העובדים לנוחות הבדיקה**
+    public void printAllWorkers() {
+        for (int i = 0; i < size; i++) {
+            System.out.println(workers[i].getFullName() + " - " + workers[i].getSalary());
+        }
+    }
+}
