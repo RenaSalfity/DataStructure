@@ -1,0 +1,40 @@
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
+public class Worker {
+	private String fullName;
+	private double salary;
+	private double workingHoursDaily;
+	private double workExperience;
+	private String departmentName;
+
+	public Worker(String fullName, double salary, double workingHoursDaily, double workExperience,
+			String departmentName) {
+		this.fullName = fullName;
+		this.salary = salary;
+		this.workingHoursDaily = workingHoursDaily;
+		this.workExperience = workExperience;
+		this.departmentName = departmentName;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public double getWorkingHoursDaily() {
+		return workingHoursDaily;
+	}
+
+	public double getWorkExperience() {
+		return workExperience;
+	}
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+}
