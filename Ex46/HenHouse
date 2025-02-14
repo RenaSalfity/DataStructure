@@ -1,0 +1,47 @@
+import java.util.Date;
+
+
+public class HenHouse {
+	 private Hen[] hens; // Array of hens
+
+	    // HenHouse with M hens (O(M))
+	    public HenHouse(int M) {
+	        hens = new Hen[M];
+	        for (int i = 0; i < M; i++) {
+	            hens[i] = new Hen(i);
+	        }
+	    }
+
+	    // Add an egg (O(1))
+	    public void addEgg(int henNumber, int id, double weight, Date date) {
+	        if (isValidHen(henNumber)) {
+	            hens[henNumber].addEgg(new Egg(id, weight, date));
+	        } else {
+	            System.out.println("Invalid hen number: " + henNumber);
+	        }
+	    }
+
+	    // Print eggs for hen i (O(K))
+	    public void printEggs(int henNumber) {
+	        if (isValidHen(henNumber)) {
+	            hens[henNumber].printEggs();
+	        } else {
+	            System.out.println("Invalid hen number: " + henNumber);
+	        }
+	    }
+
+	    // Transfer eggs from hen i to hen j (O(K))
+	    public void transferEggs(int from, int to) {
+	        if (isValidHen(from) && isValidHen(to)) {
+	            hens[from].transferEggs(hens[to]);
+	            System.out.println("Transferred eggs from hen " + from + " to hen " + to);
+	        } else {
+	            System.out.println("Invalid hen numbers: " + from + " or " + to);
+	        }
+	    }
+
+	    //  function to check hen validity, a way to keep the code away from errors of out of bounds
+	    private boolean isValidHen(int henNumber) {
+	        return henNumber >= 0 && henNumber < hens.length && hens[henNumber] != null;
+	    }
+}
