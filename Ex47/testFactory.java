@@ -1,3 +1,7 @@
+/*
+ *קאסם חליליה 207674227
+ *רינה סלפיתי 209143098
+*/
 public class testFactory {
 	public static void main(String[] args) {
 		WorkerCollection collection = new WorkerCollection();
