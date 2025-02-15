@@ -37,4 +37,11 @@ public class Worker {
 	public String getDepartmentName() {
 		return departmentName;
 	}
+	@Override
+	public String toString() {
+	    return "Worker: " + fullName + ", Salary: " + salary + 
+	           ", Hours/Day: " + workingHoursDaily + ", Experience: " + workExperience +
+	           " years, Department: " + departmentName;
+	}
+
 }
